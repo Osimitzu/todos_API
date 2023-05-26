@@ -2,6 +2,9 @@ const express = require("express");
 require("dotenv").config();
 const db = require("./utils/database");
 
+const initModels = require("./models/initModels");
+initModels();
+
 db.authenticate()
   .then(() => console.log("Base de datos conectada (/OoO)/"))
   .catch((err) => console.log(err));
