@@ -15,6 +15,16 @@ const createTodo = async (req, res) => {
 const getAllTodosFromUser = async (req, res) => {
   try {
     const { userId } = req.params;
+    const user = await Todos.findOne({
+      where: { userId },
+    });
+
+    if (!user) {
+      return res.status(400).json({
+        error: "Invalid user",
+        message: "User doesn't exist",
+      });
+    }
     const todos = await Todos.findAll({
       where: { userId },
       attributes: {

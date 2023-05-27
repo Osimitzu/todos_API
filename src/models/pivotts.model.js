@@ -11,7 +11,7 @@ const Pivotts = db.define(
     },
     subId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       field: "sub_id",
     },
   },
