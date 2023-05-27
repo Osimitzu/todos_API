@@ -1,6 +1,10 @@
 const express = require("express");
 require("dotenv").config();
 const db = require("./utils/database");
+const userRoutes = require("./routes/users.routes");
+const categoryRoutes = require("./routes/categories.routes");
+const subcategoryRoutes = require("./routes/subcategories.routes");
+const todoRoutes = require("./routes/todos.routes");
 
 const initModels = require("./models/initModels");
 initModels();
@@ -20,6 +24,11 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Servidor OK (/OoO)/");
 });
+
+app.use(userRoutes);
+app.use(categoryRoutes);
+app.use(subcategoryRoutes);
+app.use(todoRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT} (/OoO)/`);
