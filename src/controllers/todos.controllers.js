@@ -60,13 +60,13 @@ const updateTodoFromUser = async (req, res) => {
     }
 
     const todo = await Todos.findOne({
-      where: { id },
+      where: { userId, id },
     });
 
     if (!todo) {
       return res.status(400).json({
         error: "Invalid todo",
-        message: "Todo doesn't exist",
+        message: "Todo doesn't exist or doesn't belong to the user",
       });
     }
 
